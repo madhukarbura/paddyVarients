@@ -48,6 +48,19 @@
     }
 
     .label { font-weight: bold; color: #0b67d1; }
+
+    .img-box {
+        width: 100%;
+        text-align: center;
+        margin-bottom: 15px;
+    }
+
+    .img-box img {
+        width: 100%;
+        max-height: 250px;
+        object-fit: cover;
+        border-radius: 10px;
+    }
 </style>
 </head>
 
@@ -62,6 +75,9 @@
         <option value="">-- Choose Variety --</option>
         <option value="1638">Paddy 1638</option>
         <option value="1010">Paddy 1010</option>
+        <option value="swarna">Swarna (MTU 7029)</option>
+        <option value="bpt">BPT 5204 (Samba Masuri)</option>
+        <option value="mtu">MTU 1001</option>
     </select>
 
     <div id="result"></div>
@@ -74,14 +90,40 @@ const data = {
         duration: "135–145 days",
         yield: "38–42 bags per acre",
         soil: "Light to medium black soil; well-drained",
-        highlight: "Very high yield and disease resistance"
+        highlight: "Very high yield and disease resistance",
+        image: "https://via.placeholder.com/800x400?text=Paddy+1638"
     },
     "1010": {
         name: "Paddy 1010",
         duration: "120–130 days",
         yield: "32–35 bags per acre",
         soil: "Red soil / medium soil",
-        highlight: "Stable variety and suitable for rain-fed areas"
+        highlight: "Stable variety and suitable for rain-fed areas",
+        image: "https://via.placeholder.com/800x400?text=Paddy+1010"
+    },
+    "swarna": {
+        name: "Swarna (MTU 7029)",
+        duration: "145–150 days",
+        yield: "40–45 bags per acre",
+        soil: "Clay loam and medium black soils",
+        highlight: "Excellent grain quality and drought tolerance",
+        image: "https://via.placeholder.com/800x400?text=Swarna+MTU+7029"
+    },
+    "bpt": {
+        name: "BPT 5204 (Samba Masuri)",
+        duration: "135–140 days",
+        yield: "30–34 bags per acre",
+        soil: "Fertile red loamy soil; irrigated areas",
+        highlight: "Very fine rice quality; preferred for cooking",
+        image: "https://via.placeholder.com/800x400?text=BPT+5204"
+    },
+    "mtu": {
+        name: "MTU 1001",
+        duration: "130–135 days",
+        yield: "36–40 bags per acre",
+        soil: "Alluvial & red soils",
+        highlight: "High tillering and suitable for summer irrigation",
+        image: "https://via.placeholder.com/800x400?text=MTU+1001"
     }
 };
 
@@ -98,6 +140,9 @@ document.getElementById("varietySelector").addEventListener("change", function()
 
     box.innerHTML = `
         <div class="card">
+            <div class="img-box">
+                <img src="${v.image}" alt="${v.name}">
+            </div>
             <h3>${v.name}</h3>
             <p><span class="label">Crop Duration:</span> ${v.duration}</p>
             <p><span class="label">Expected Yield:</span> ${v.yield}</p>
