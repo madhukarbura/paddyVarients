@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Paddy Variety Guide</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background: #f2f7ff;
+        margin: 0;
+        padding: 0;
+    }
+
+    header {
+        background: #0b67d1;
+        padding: 20px;
+        color: white;
+        text-align: center;
+        font-size: 26px;
+        font-weight: bold;
+    }
+
+    .container {
+        max-width: 800px;
+        margin: 30px auto;
+        background: white;
+        padding: 20px;
+        border-radius: 12px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    select {
+        width: 100%;
+        padding: 12px;
+        font-size: 16px;
+        border-radius: 8px;
+        border: 1px solid #ccc;
+        margin-bottom: 20px;
+    }
+
+    .card {
+        background: #eaf2ff;
+        padding: 20px;
+        border-radius: 10px;
+        margin-top: 10px;
+    }
+
+    .label { font-weight: bold; color: #0b67d1; }
+</style>
+</head>
+
+<body>
+
+<header>Paddy Variety Guide</header>
+
+<div class="container">
+    <h2>Select a Paddy Variety</h2>
+
+    <select id="varietySelector">
+        <option value="">-- Choose Variety --</option>
+        <option value="1638">Paddy 1638</option>
+        <option value="1010">Paddy 1010</option>
+    </select>
+
+    <div id="result"></div>
+</div>
+
+<script>
+const data = {
+    "1638": {
+        name: "Paddy 1638",
+        duration: "135–145 days",
+        yield: "38–42 bags per acre",
+        soil: "Light to medium black soil; well-drained",
+        highlight: "Very high yield and disease resistance"
+    },
+    "1010": {
+        name: "Paddy 1010",
+        duration: "120–130 days",
+        yield: "32–35 bags per acre",
+        soil: "Red soil / medium soil",
+        highlight: "Stable variety and suitable for rain-fed areas"
+    }
+};
+
+document.getElementById("varietySelector").addEventListener("change", function() {
+    const key = this.value;
+    const box = document.getElementById("result");
+
+    if (!key) {
+        box.innerHTML = "";
+        return;
+    }
+
+    const v = data[key];
+
+    box.innerHTML = `
+        <div class="card">
+            <h3>${v.name}</h3>
+            <p><span class="label">Crop Duration:</span> ${v.duration}</p>
+            <p><span class="label">Expected Yield:</span> ${v.yield}</p>
+            <p><span class="label">Best Soil:</span> ${v.soil}</p>
+            <p><span class="label">Why Choose:</span> ${v.highlight}</p>
+        </div>
+    `;
+});
+</script>
+
+</body>
+</html>
